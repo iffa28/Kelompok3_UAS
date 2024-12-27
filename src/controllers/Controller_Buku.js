@@ -33,7 +33,7 @@ module.exports = {
 
     formBuku(req,res){
         res.render("addBuku",{
-            url : 'http://localhost:3000/buku/',
+            url : 'http://localhost:3000/',
         });
     },
 
@@ -65,15 +65,39 @@ module.exports = {
         }
     },
 
-    updateBuku(req, res) {
+    editBuku(req, res) {
         const { id_buku } = req.params;
         pool.getConnection(function (err, connection) {
             if (err) throw err;
-            const query = 'UPDATE buku SET judul_buku = ?, pengarang_buku = ?, thn_terbit = ? WHERE id_buku = ?';
-            connection.query(query, [judul, penulis, penerbit, tahun, id], function (error, results) {
+            connection.query('SELECT * FROM buku WHERE id_buku = ?', [id_buku], function (error, results) {
                 if (error) throw error;
-                res.redirect('/buku'); // Redirect ke halaman buku setelah berhasil memperbarui
+                if (results.length > 0) {
+                    res.render('editBuku', {
+                        url: 'http://localhost:5050/',
+                        buku: results[0]
+                    });
+                } else {
+                    res.redirect('/buku');
+                }
             });
+            connection.release();
+        });
+    },
+
+    updateBuku(req, res) {
+        const { id_buku } = req.params;
+        const { judul_buku, pengarang_buku, thn_terbit } = req.body;
+        pool.getConnection(function (err, connection) {
+            if (err) throw err;
+            connection.query(
+                'UPDATE buku SET judul_buku = ?, pengarang_buku = ?, thn_terbit = ? WHERE id_buku = ?',
+                [judul_buku, pengarang_buku, thn_terbit, id_buku],
+                function (error, results) {
+                if (error) throw error;
+                res.redirect('/buku');
+                }
+
+            );
             connection.release();
         });
     },

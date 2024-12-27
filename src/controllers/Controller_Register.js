@@ -13,14 +13,14 @@ module.exports = {
         });
     },
     saveRegister(req, res) {
-        let username = req.body.username;
-        let password = req.body.pass;
-        if (username && password) {
+        let email = req.body.email;
+        let pw_user = req.body.pw_user;
+        if (email && pw_user) {
             pool.getConnection(function (err, connection) {
                 if (err) throw err;
                 connection.query(
-                    `INSERT INTO admin (username,password) VALUES (?,SHA2(?,512));`
-                    , [username, password], function (error, results) {
+                    `INSERT INTO user (email,pw_user) VALUES (?,SHA2(?,512));`
+                    , [email, pw_user], function (error, results) {
                         if (error) throw error;
                         req.flash('color', 'success');
                         req.flash('status', 'Yes..');

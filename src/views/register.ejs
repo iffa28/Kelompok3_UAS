@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/style.css">
+    <title>Register</title>
+</head>
+<body>
+    <header class="header">
+        <a class="Logo">Logo</a>
+
+        <nav class="navbar">
+            <a href="<%= url %>login">Kembali</a>            
+        </nav>
+    </header>
+    <div class="container">
+        <div class="form-section">
+            <a>Login</a>
+            <a>Register</a>
+            <form action="<%= url %>register/save" method="POST">
+                <div class="input-field">
+                    <i class="fas fa-user"></i>
+                    <input type="email" name="email" placeholder="masukkan Email" required>
+                </div>
+                <div class="input-field">
+                    <i class="fas fa-lock"></i>
+                    <input type="password" name="pw_user" placeholder="masukkan password" required>
+                </div>
+                <button type="submit">Register</button>
+            </form>
+        </div>
+    </div>
+    <div class="side-pic">
+        <img src="https://i.pinimg.com/736x/bc/a9/9f/bca99faefba0e082b84478e1fd9f45f0.jpg">
+    </div>
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+</body>
+</html>

@@ -48,6 +48,7 @@ app.use("/login", loginRoute);
 app.use("/register", registerRoute);
 app.use("/buku", bukuRoute);
 app.use("/", appRoute)
+app.use("/home_user", appRoute);
 
 console.log(app._router.stack);
 

@@ -1,37 +1,47 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/css/style.css">
     <title>Login</title>
 </head>
+
 <body>
     <header class="header">
         <a class="Logo">Logo</a>
-
-        <nav class="navbar">
-            <a href="login.ejs">Logout</a>
-        </nav>
     </header>
     <div class="container">
         <div class="form-section">
-            <h2>Login</h2>
-            <h2>Register</h2>
-            <form>
+            <a>Login</a>
+            <a href="<%= url %>register">Register</a>
+            <form action="<%= url %>login/auth" method="POST">
                 <div class="input-field">
                     <i class="fas fa-user"></i>
-                    <input type="username" placeholder="Username" required>
+                    <input type="username" name="username" placeholder="Username" required>
                 </div>
                 <div class="input-field">
                     <i class="fas fa-lock"></i>
-                    <input type="password" placeholder="Password" required>
+                    <input type="password" name="password" placeholder="Password" required>
+                </div>
+                <div class="input-field">
+                    <label for="role">Login as:</label>
+                    <select class="form-control" name="role" id="role" required>
+                        <option value="admin">Admin</option>
+                        <option value="user">User</option>
+                    </select>
                 </div>
                 <button type="submit">Login</button>
             </form>
         </div>
-        <div class="hhttps://pin.it/1p9BfGU2v"></div>
+        <div class="image-container">
+            <img src="https://i.pinimg.com/736x/bc/a9/9f/bca99faefba0e082b84478e1fd9f45f0.jpg" alt="Half Image"
+                class="half-image">
+        </div>
     </div>
+
     <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
 </body>
+
 </html>
