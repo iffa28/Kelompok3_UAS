@@ -3,22 +3,36 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/public/css/style.css">
     <title>Admin Perpustakaan</title>
 </head>
 <body>
     <!---navbar---->
     <header class="header">
         <a class="logo">Admin Perpustakaan</a>
-
         <nav class="navbar">
-            <a href="login.ejs">Logout</a>
+        <a href="login.ejs">Logout</a>
         </nav>
     </header>
-    <div>
-        <h1>Catalog</h1>
-        <p>Tambahkan, lihat, perbarui, atau hapus buku sesuai kebutuhan.
-            Pastikan data katalog selalu akurat dan terkini.</p>
-    </div>
-
+    <main>
+        <section class="Catalog">
+            <h1>Catalog</h1>
+            <p>Tambahkan, lihat, perbarui, atau hapus buku sesuai kebutuhan.
+                Pastikan data katalog selalu akurat dan terkini.</p>
+            <button class="add-book">Tambah Buku</button>
+            <div class="book-list">
+                <% for (let i = 1; i <= 9; i++) { %>
+                    <div class="book-card">
+                    <p>Buku <%= i %></p>
+                    <button class="edit">Edit</button>
+                    <button class="delete">Hapus</button>
+                    </div>
+                <% } %>
+            </div>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2024 Project Kelompok 3</p>
+    </footer>
 </body>
 </html>
