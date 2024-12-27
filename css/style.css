@@ -1,0 +1,145 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+}
+
+body {
+    margin: 0;
+    background-color: #f8f8f8;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.header{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 20px 100px;
+    background: transparent;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 100;
+}
+
+.logo{
+    font-size: 32px;
+    color: #fff;
+    text-decoration: none;
+    font-weight: 700;
+}
+
+.navbar{
+    font-size: 32px;
+    color: #fff;
+    font-weight: 500;
+    text-decoration: none;
+    margin-left: 40px;
+}
+
+.navbar a{
+    position: relative;
+    font-size: 18px;
+    color: #fff;
+    font-weight: 500;
+    text-decoration: none;
+    margin-left: 40px;
+}
+
+.navbar a::before{
+    content: '';
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: #fff;
+}
+
+.navbar a:hover::before{
+    width: 100%;
+}
+
+.container {
+    display: flex;
+    width: 800px;
+    height: 500px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    overflow: hidden;
+    background-color: white;
+}
+
+.form-section {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 40px;
+}
+
+.form-section h2 {
+    color: #AC8478;
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.form-section form {
+    width: 100%;
+    max-width: 300px;
+}
+
+.input-field {
+    width: 100%;
+    margin-bottom: 20px;
+    position: relative;
+}
+
+.input-field input {
+    width: 100%;
+    padding: 10px 40px;
+    font-size: 16px;
+    border: 1px solid #ddd;
+    border-radius: 25px;
+    outline: none;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+}
+
+.input-field i {
+    position: absolute;
+    top: 50%;
+    left: 10px;
+    transform: translateY(-50%);
+    color: #AC8478;
+    font-size: 20px;
+}
+
+.form-section button {
+    width: 100%;
+    padding: 10px;
+    background-color: #AC8478;
+    color: white;
+    border: none;
+    border-radius: 25px;
+    font-size: 16px;
+    cursor: pointer;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.form-section button:hover {
+    background-color: #9C7468;
+}
+
+.image-section {
+    flex: 1;
+    background: url('https://via.placeholder.com/400x500') no-repeat center center/cover;
+    clip-path: ellipse(75% 100% at right);
+}
