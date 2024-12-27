@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Peminjaman Buku</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+    <header class="header">
+        <div class="logo">LOGO</div>
+        <nav class="navbar">
+            <a href="/">Home</a>
+            <a href="<%= url %>pinjam">Peminjaman Buku</a>
+            <a href="<%= url %>login">Logout</a>
+        </nav>
+    </header>
+
+    <main class="container">
+        <h1 class="title">Form Peminjaman Buku</h1>
+        <div class="content">
+            <div class="note">
+                <h2>Caranya?</h2>
+                <p>
+                    Untuk meminjam buku, silakan isi formulir peminjaman yang tersedia di halaman ini. Pastikan Anda mengisi
+                    semua kolom yang diperlukan dengan informasi yang akurat, kemudian klik tombol "OK" untuk menyelesaikan
+                    proses peminjaman. Buku yang Anda pilih akan segera diproses.
+                </p>
+            </div>
+            <div class="form-container">
+                <form action="/submit" method="POST">
+                    <input type="text" name="judulBuku" placeholder="Judul Buku" required>
+                    <input type="date" name="tanggalPeminjaman" placeholder="Tanggal Peminjaman" required>
+                    <input type="date" name="tanggalPengembalian" placeholder="Tanggal Pengembalian" required>
+                    <button type="submit" class="btn">Submit</button>
+                </form>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        © 2024 Project Kelompok 3
+    </footer>
+</body>
+
+</html>

@@ -33,7 +33,7 @@ body {
 
 /* LOGO */
 .logo {
-    font-size: 32px;
+    font-size: 80px;
     color: black;
     text-decoration: none;
     font-weight: 700;
@@ -70,6 +70,7 @@ body {
 
 .navbar a:hover::before {
     width: 100%;
+    color: black;
 }
 
 /* Container */
@@ -161,18 +162,69 @@ body {
 }*/
 
 .image-container {
-    width: 100%; /* Memastikan lebar penuh */
-    height: 100%; /* Memastikan tinggi penuh */
-    display: flex; 
-    justify-content: center; 
-    align-items: center; 
-    overflow: hidden; 
-    background-color: #f8f8f8; 
+    /* Memastikan lebar penuh */
+    height: 100%;
+    /* Memastikan tinggi penuh */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    background-color: white;
 }
 
 .image-container img {
-    width: 100%;
+
     height: 100%;
-    object-fit: cover; 
-    clip-path: ellipse(70% 100% at 100% 50%); /* Membentuk setengah lingkaran */
+    object-fit: cover;
+    box-shadow: -10px 0 20px rgba(0, 0, 0, 0.2);
+
+}
+
+
+.dropdown-container {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    font-family: "Poppins", sans-serif;
+    font-size: 16px;
+    margin-bottom: 20px;
+}
+
+/* Dropdown */
+.dropdown {
+    width: 100%;
+    max-width: 300px;
+    padding: 10px 15px;
+    font-size: 16px;
+    font-weight: 500;
+    color: #333;
+    background-color: #fff;
+    border: 1px solid #fff;
+    border-radius: 8px;
+    appearance: none; /* Hapus gaya bawaan browser */
+    outline: none;
+    cursor: pointer;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease-in-out;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 24 24' fill='none' stroke='%23999' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 15px center;
+    background-size: 15px;
+}
+
+/* Hover dan Fokus pada Dropdown */
+.dropdown:hover {
+    border-color: #ac8478;
+}
+
+.dropdown:focus {
+    border-color: #ac8478;
+    box-shadow: 0 0 8px rgba(172, 132, 120, 0.3);
+}
+
+/* Gaya untuk Opsi */
+.dropdown option {
+    font-size: 16px;
+    font-weight: 400;
+    color: #ac8478;
 }
