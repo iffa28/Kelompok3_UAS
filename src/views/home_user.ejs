@@ -4,29 +4,171 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Perpustakaan</title>
+    <title>Form Peminjaman Buku</title>
     <link rel="stylesheet" href="/css/style.css">
 </head>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f9;
+        color: #333;
+    }
+
+    .header {
+        background-color: #d7b5a8;
+        color: white;
+        padding: 15px 30px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .header .logo {
+        font-size: 1.5rem;
+        font-weight: bold;
+    }
+
+    .navbar a {
+        color: white;
+        font-size: 1rem;
+        font-weight: bold;
+        transition: color 0.3s ease;
+    }
+
+    .navbar a:hover {
+        color: #ffd7b5;
+    }
+
+    .container {
+        background-color: #ffffff;
+        border-radius: 10px;
+        padding: 70px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        animation: fadeIn 0.8s ease;
+    }
+
+    .title {
+        font-size: 1.8rem;
+        color: #d7b5a8;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+    }
+
+    .content {
+        gap: 50px;
+        margin-top: 50px;
+    }
+
+    .note h2 {
+        font-size: 1.2rem;
+        color: #d7b5a8;
+        font-weight: bold;
+    }
+
+    .note p {
+        font-size: 0.9rem;
+        color: #d7b5a8;
+        line-height: 1.6;
+    }
+
+    .form-container {
+        background-color: #ffffff;
+        border-radius: 15px;
+        gap: 15px;
+        padding: 25px;
+        box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .form-container:hover {
+        transform: scale(1.02);
+        box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    .form-container input {
+        border: 1px solid #ddd;
+        padding: 12px;
+        border-radius: 8px;
+        font-size: 0.9rem;
+        transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .form-container input:focus {
+        border-color: #d7b5a8;
+        box-shadow: 0 0 6px rgba(215, 181, 168, 0.6);
+        outline: none;
+    }
+
+    .btn {
+        background-color: #d7b5a8;
+        color: white;
+        border: none;
+        padding: 10px 15px;
+        border-radius: 8px;
+        font-weight: bold;
+        font-size: 1rem;
+        cursor: pointer;
+        transition: background-color 0.3s ease, transform 0.2s ease;
+    }
+
+    .btn:hover {
+        background-color: #c59b8e;
+        transform: translateY(-2px);
+    }
+
+    footer {
+        text-align: center;
+        background-color: transparent;
+        color: black;
+        padding: 10px 0;
+        font-size: 0.9rem;
+    }
+
+    /* Animasi untuk kontainer utama */
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+            transform: translateY(10px);
+        }
+
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+</style>
+
 <body>
     <header class="header">
-        <div class="logo">
-            LOGO
-        </div>
+        <div class="logo">LOGO</div>
         <nav class="navbar">
-            <a href="/">Home</a>
-            <a href="<%= url %>login">Login</a>
+            <a href="<%= url %>login">Logout</a>
         </nav>
     </header>
 
-    <div class="hero">
-        <div class="hero-content">
-            <h1>Selamat Datang!</h1>
-            <p>Temukan berbagai koleksi buku menarik yang siap menemani perjalanan literasi Anda.</p>
-            <a href="<%= url %>pinjam" class="btn">Peminjaman Buku</a>
+    <main class="container">
+        <h1 class="title">Form Peminjaman Buku</h1> <br>
+        <h2>Caranya?</h2><br>
+        <p> <br>
+            Untuk meminjam buku, silakan isi formulir peminjaman yang tersedia di halaman ini. Pastikan Anda mengisi
+            semua kolom yang diperlukan dengan informasi yang akurat, kemudian klik tombol "OK" untuk menyelesaikan
+            proses peminjaman. Buku yang Anda pilih akan segera diproses.
+        </p>
+        <div class="content">
+            <div class="note">
+            </div>
+            <div class="form-container">
+                <form action="/submit" method="POST">
+                    <input type="text" name="judulBuku" placeholder="Judul Buku" required>
+                    <input type="date" name="tanggalPeminjaman" placeholder="Tanggal Peminjaman" required>
+                    <input type="date" name="tanggalPengembalian" placeholder="Tanggal Pengembalian" required>
+                    <button type="submit" class="btn">Submit</button>
+                </form>
+            </div>
         </div>
-    </div>
-    <footer>
-        <p>&copy; 2024 Project Kelompok 3</p>
+    </main>
+
+    <footer class="footer">
+        © 2024 Project Kelompok 3
     </footer>
 </body>
+
 </html>
