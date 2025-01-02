@@ -48,7 +48,7 @@ module.exports = {
                         if (role === 'admin') {
                             res.redirect('/');
                         } else if (role === 'user') {
-                            res.redirect('/home_user');
+                            res.redirect('/peminjaman');
                         }
                     } else {
                         req.flash('color', 'danger');

@@ -156,11 +156,20 @@
             <div class="note">
             </div>
             <div class="form-container">
-                <form action="/submit" method="POST">
-                    <input type="text" name="judulBuku" placeholder="Judul Buku" required>
-                    <input type="date" name="tanggalPeminjaman" placeholder="Tanggal Peminjaman" required>
-                    <input type="date" name="tanggalPengembalian" placeholder="Tanggal Pengembalian" required>
-                    <button type="submit" class="btn">Submit</button>
+                <form action="/peminjaman/save" method="POST">
+                    <div class="form-group">
+                        <label for="judul_buku">Judul Buku :</label>
+                        <input type="text" class="form-control" name="judul_buku" id="judul_buku" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="tgl_pinjam">Tanggal Pinjam :</label>
+                        <input type="date" class="form-control" name="tgl_pinjam" id="tgl_pinjam" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="tgl_kembali">Tanggal Kembali :</label>
+                        <input type="date" class="form-control" name="tgl_kembali" id="tgl_kembali" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Kirim</button>
                 </form>
             </div>
         </div>
