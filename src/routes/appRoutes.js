@@ -4,11 +4,12 @@ const homeUserController = require('../controllers').peminjaman;
 const bukuController = require('../controllers').buku;
 const verifyUser = require('../configs/verify');
 const pinjamRoutes = require('./Route_Pinjam');
+//const bukuRoute = require('./Route_Buku')
 
 router.get('/', verifyUser.isLogin, homeController.home_admin);
 router.get('/peminjaman', verifyUser.isLogin, homeUserController.peminjaman);
 router.get('/buku', verifyUser.isLogin, bukuController.getBuku);
 
-
-router.use('/peminjaman', pinjamRoutes)
+//router.use('/', bukuRoute)
+router.use('/peminjaman', pinjamRoutes);
 module.exports = router;

@@ -31,21 +31,21 @@ module.exports = {
 
     },
 
-    formBuku(req,res){
-        res.render("addBuku",{
-            url : 'http://localhost:3000/',
+    formBuku(req, res) {
+        res.render("addBuku", {
+            url: 'http://localhost:3000/',
         });
     },
 
     saveBuku(req, res) {
         let { judul_buku, pengarang_buku, thn_terbit } = req.body;
-        console.log(judul_buku, pengarang_buku, thn_terbit); 
+        console.log(judul_buku, pengarang_buku, thn_terbit);
         if (judul_buku && pengarang_buku && thn_terbit) {
             pool.getConnection(function (err, connection) {
                 if (err) throw err;
                 connection.query(
                     `INSERT INTO buku (judul_buku, pengarang_buku, thn_terbit) VALUES (?, ?, ?);`,
-                    [judul_buku, pengarang_buku, thn_terbit], 
+                    [judul_buku, pengarang_buku, thn_terbit],
                     function (error, results) {
                         if (error) {
                             console.error(error);
@@ -73,7 +73,7 @@ module.exports = {
                 if (error) throw error;
                 if (results.length > 0) {
                     res.render('editBuku', {
-                        url: 'http://localhost:5050/',
+                        url: 'http://localhost:3000/',
                         buku: results[0]
                     });
                 } else {
@@ -93,8 +93,8 @@ module.exports = {
                 'UPDATE buku SET judul_buku = ?, pengarang_buku = ?, thn_terbit = ? WHERE id_buku = ?',
                 [judul_buku, pengarang_buku, thn_terbit, id_buku],
                 function (error, results) {
-                if (error) throw error;
-                res.redirect('/buku');
+                    if (error) throw error;
+                    res.redirect('/buku');
                 }
 
             );
