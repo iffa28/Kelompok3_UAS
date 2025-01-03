@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Form Peminjaman Buku</title>
-    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/peminjam">
 </head>
 <style>
     body {
@@ -15,20 +15,27 @@
     }
 
     .header {
-        background-color: #d7b5a8;
-        color: white;
-        padding: 15px 30px;
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    }
+    background-color: #d7b5a8;
+    color: white;
+    padding: 15px 30px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    width: 100vw; /* Memastikan header penuh satu layar */
+    display: flex;
+    justify-content: space-between; /* Atur posisi logo dan logout */
+    align-items: center; /* Rata tengah secara vertikal */
+}
+
 
     .header .logo {
         font-size: 1.5rem;
         font-weight: bold;
     }
+    
 
     .navbar a {
         color: white;
         font-size: 1rem;
+        margin-left: auto; /* Mendorong logout ke sisi kanan */
         font-weight: bold;
         transition: color 0.3s ease;
     }
@@ -38,18 +45,145 @@
     }
 
     .container {
+        display: grid;
+        grid-template-columns: 1fr 1fr; /* Kolom kiri dan kanan memiliki ukuran yang sama */
+        gap: 20px; /* Jarak antar kolom */
+        align-items: flex-start;
         background-color: #ffffff;
         border-radius: 10px;
         padding: 70px;
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         animation: fadeIn 0.8s ease;
+        margin-top: 100px; 
     }
+
 
     .title {
         font-size: 1.8rem;
         color: #d7b5a8;
         text-transform: uppercase;
         letter-spacing: 1px;
+        position: absolute;
+        top: 10%; 
+        left: 50%;
+        transform: translate(-50%, -20%);
+    }
+
+    select#id_buku {
+    width: 100%;
+    padding: 10px 15px 10px 40px; /* Ruang untuk ikon di kiri */
+    border: 1px solid #ddd;
+    border-radius: 25px;
+    background: #f7ebe1; 
+    font-size: 14px;
+    color: #6a4b41; 
+    appearance: none;
+    -webkit-appearance: none; 
+    -moz-appearance: none;
+    outline: none;
+    box-shadow: none;
+}
+
+select#id_buku:focus {
+    border-color: #c8a17a; /* Warna border saat fokus */
+    background: #e5d3c6;
+}
+
+    select#id_buku option {
+        background: #f7ebe1; /* Warna yang sesuai dengan dropdown */
+        color: #6a4b41;
+    }
+    
+    .form-group#id_buku ::before {
+        content: '▼'; /* Simbol untuk ikon dropdown */
+        font-size: 14px; 
+        color: #6a4b41; /* Warna ikon */
+        position: absolute;
+        top: 50%; /* Tengah vertikal */
+        left: 15px; /* Posisi ikon dari tepi kiri */
+        transform: translateY(-50%); /* Sesuaikan perataan */
+        pointer-events: none; /* Ikon tidak bisa diklik */
+    }
+
+    select#id_buku::after {
+        content: '▼';
+        color: #6a4b41; /* Warna ikon */
+        position: absolute;
+        right: 15px;
+        top: 50%;
+        transform: translateY(-50%);
+        pointer-events: none;
+    }
+  
+    .form-container {
+    background-color: rgba(210, 180, 160, 0.8); /* Warna cokelat dengan transparansi */
+    border-radius: 20px; /* Sudut melengkung */
+    padding: 30px;
+    width: 350px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Bayangan lembut */
+    text-align: center; /* Pusatkan konten di dalam form */
+    }
+
+    .form-group {
+        margin-bottom: 20px;
+        position: relative;
+    }
+
+.form-container label {
+    display: block;
+    font-size: 14px;
+    color: #fff; /* Warna teks label */
+    margin-bottom: 5px;
+    text-align: left; /* Rata kiri */
+}
+
+.form-container input {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 20px;
+    background-color: rgba(255, 255, 255, 0.7); /* Warna putih dengan transparansi */
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1); /* Efek dalam */
+    font-size: 14px;
+    color: #8a4e3b; /* Warna teks input */
+}
+
+.form-container input::placeholder {
+    color: #d8c3b6; /* Warna placeholder */
+}
+
+.form-container input:focus {
+    outline: none;
+    background-color: rgba(255, 255, 255, 0.9); /* Efek lebih terang saat fokus */
+}
+
+.form-container button {
+    width: 100%;
+    padding: 10px;
+    background-color: #c9a799; /* Warna tombol cokelat muda */
+    border: none;
+    border-radius: 20px;
+    color: #fff; /* Warna teks tombol */
+    font-size: 16px;
+    font-weight: bold;
+    box-shadow: 2px 4px 6px rgba(0, 0, 0, 0.2); /* Efek bayangan tombol */
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.form-container button:hover {
+    background-color: #b28b7d; /* Warna tombol saat hover */
+    transform: translateY(-2px); /* Efek naik */
+}
+
+.form-container button:active {
+    background-color: #a0786e; /* Warna tombol saat diklik */
+    transform: translateY(0); /* Efek kembali */
+}
+
+    .container h1{
+        text-align: center; 
+        margin-bottom: 20px;
     }
 
     .content {
@@ -57,61 +191,29 @@
         margin-top: 50px;
     }
 
-    .note h2 {
-        font-size: 1.2rem;
+    .left-section {
+        text-align: left; /* Rata kiri untuk teks */
+    }
+
+    .left-section h2 {
+        font-size: 1.5rem;
         color: #d7b5a8;
         font-weight: bold;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        margin-bottom: 15px;
     }
 
-    .note p {
-        font-size: 0.9rem;
-        color: #d7b5a8;
-        line-height: 1.6;
-    }
-
-    .form-container {
-        background-color: #ffffff;
-        border-radius: 15px;
-        gap: 15px;
-        padding: 25px;
-        box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
-        transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
-
-    .form-container:hover {
-        transform: scale(1.02);
-        box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
-    }
-
-    .form-container input {
-        border: 1px solid #ddd;
-        padding: 12px;
-        border-radius: 8px;
-        font-size: 0.9rem;
-        transition: border-color 0.3s ease, box-shadow 0.3s ease;
-    }
-
-    .form-container input:focus {
-        border-color: #d7b5a8;
-        box-shadow: 0 0 6px rgba(215, 181, 168, 0.6);
-        outline: none;
-    }
-
-    .btn {
-        background-color: #d7b5a8;
-        color: white;
-        border: none;
-        padding: 10px 15px;
-        border-radius: 8px;
-        font-weight: bold;
+    .left-section p {
         font-size: 1rem;
-        cursor: pointer;
-        transition: background-color 0.3s ease, transform 0.2s ease;
+        color: #d7b5a8;
+        line-height: 1.8;
     }
 
-    .btn:hover {
-        background-color: #c59b8e;
-        transform: translateY(-2px);
+    .right-section {
+        display: flex;
+        justify-content: center; /* Pusatkan form secara horizontal */
+        align-items: center; /* Pusatkan form secara vertikal */
     }
 
     footer {
@@ -143,34 +245,43 @@
             <a href="<%= url %>login">Logout</a>
         </nav>
     </header>
+    
 
     <main class="container">
+        <div class="left-section">
         <h1 class="title">Form Peminjaman Buku</h1> <br>
-        <h2>Caranya?</h2><br>
-        <p> <br>
+        <h2>Caranya?</h2>
+        <p> 
             Untuk meminjam buku, silakan isi formulir peminjaman yang tersedia di halaman ini. Pastikan Anda mengisi
             semua kolom yang diperlukan dengan informasi yang akurat, kemudian klik tombol "OK" untuk menyelesaikan
             proses peminjaman. Buku yang Anda pilih akan segera diproses.
         </p>
+        </div>
+        <div class="right-section">
         <div class="content">
-            <div class="note">
-            </div>
-            <div class="form-container">
-                <form action="/peminjaman/save" method="POST">
-                    <div class="form-group">
-                        <label for="judul_buku">Judul Buku :</label>
-                        <input type="text" class="form-control" name="judul_buku" id="judul_buku" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="tgl_pinjam">Tanggal Pinjam :</label>
-                        <input type="date" class="form-control" name="tgl_pinjam" id="tgl_pinjam" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="tgl_kembali">Tanggal Kembali :</label>
-                        <input type="date" class="form-control" name="tgl_kembali" id="tgl_kembali" required>
-                    </div>
-                    <button type="submit" class="btn btn-primary">Kirim</button>
-                </form>
+            <div class="note"></div>
+                <div class="form-container">
+                    <form action="/peminjaman/save" method="POST">
+                        <div class="form-group">
+                            <select name="id_buku" id="id_buku" required onchange="updateJudulBuku()">
+                                <option value="" disabled selected>Pilih Buku</option>
+                                <% books.forEach(book => { %>
+                                    <option value="<%= book.id_buku %>" data-judul="<%= book.judul_buku %>">
+                                        <%= book.judul_buku %>
+                                    </option>
+                                <% }) %>
+                            </select>
+                            <input type="hidden" name="judul_buku" id="judul_buku">
+                        </div>
+                        <div class="form-group">
+                            <input type="date" name="tgl_pinjam" id="tgl_pinjam" placeholder="Tanggal Peminjaman" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="date" name="tgl_kembali" id="tgl_kembali" placeholder="Tanggal Pengembalian" required>
+                        </div>
+                        <button type="submit">OK</button>
+                    </form>
+                </div>
             </div>
         </div>
     </main>
@@ -178,6 +289,15 @@
     <footer class="footer">
         © 2024 Project Kelompok 3
     </footer>
+
+    <script>
+        function updateJudulBuku() {
+            const selectElement = document.getElementById('id_buku');
+            const selectedOption = selectElement.options[selectElement.selectedIndex];
+            const judulBuku = selectedOption.getAttribute('data-judul');
+            document.getElementById('judul_buku').value = judulBuku;
+        }
+    </script>
 </body>
 
 </html>

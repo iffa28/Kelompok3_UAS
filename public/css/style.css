@@ -107,10 +107,28 @@ body {
 }
 
 .form-section a {
-    color: #AC8478;
-    font-size: 24px;
-    margin-bottom: 20px;
+    color: #AC8478; /* Warna teks */
+    font-size: 24px; /* Ukuran font */
+    margin-bottom: 20px; /* Jarak bawah */
+    text-decoration: none; /* Menghilangkan garis bawah bawaan */
+    position: relative; /* Untuk posisi garis bawah kustom */
 }
+
+.form-section a:hover::after {
+    content: ""; /* Konten pseudo-element */
+    position: absolute; /* Menjadikan garis absolut di bawah teks */
+    bottom: -5px; /* Jarak garis dari teks */
+    left: 0; /* Mulai dari kiri */
+    width: 100%; /* Panjang garis */
+    height: 2px; /* Ketebalan garis */
+    background-color: #AC8478; /* Warna garis bawah */
+    transition: width 0.3s ease-in-out; /* Animasi muncul */
+}
+
+.form-section a:hover {
+    color: #8A6758; /* Warna teks saat hover */
+}
+
 
 .form-section form {
     width: 100%;
