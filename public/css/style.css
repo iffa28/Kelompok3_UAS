@@ -96,13 +96,6 @@ body {
     background-color: white;
 }
 
-/* Image Section */
-.image-section {
-    flex: 1;
-    background: url('https://via.placeholder.com/400x500') no-repeat center center/cover;
-    clip-path: ellipse(75% 100% at right);
-}
-
 /* Form Section */
 .form-section {
     flex: 1;
@@ -118,7 +111,7 @@ body {
     /*color: #AC8478; /* Warna teks */
     font-size: 24px;
     /* Ukuran font */
-    margin-bottom: 20px;
+    margin: 20px;
     /* Jarak bawah */
     text-decoration: none;
     /* Menghilangkan garis bawah bawaan */
@@ -167,6 +160,7 @@ body {
     padding: 10px 40px;
     font-size: 16px;
     border: 1px solid #ddd;
+    font-family: "Poppins", sans-serif;
     border-radius: 25px;
     outline: none;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
@@ -219,6 +213,8 @@ body {
 .image-container img {
     height: 100%;
     object-fit: cover;
+    width: 400px;
+    clip-path: circle(75% at 100% 50%);
     box-shadow: -10px 0 20px rgba(0, 0, 0, 0.2);
 
 }
@@ -240,10 +236,10 @@ body {
     padding: 10px 15px;
     font-size: 16px;
     font-weight: 500;
-    color: #333;
+    color: #AC8478;
     background-color: #fff;
-    border: 1px solid #fff;
-    border-radius: 8px;
+    border: 1px solid #ddd;
+    border-radius: 25px;
     appearance: none;
     /* Hapus gaya bawaan browser */
     outline: none;
@@ -271,4 +267,13 @@ body {
     font-size: 16px;
     font-weight: 400;
     color: #ac8478;
+}
+
+
+
+.form-section h2 {
+    color: #AC8478;
+    font-family: 'Poppins', sans-serif;
+    font-size: 35px;
+
 }

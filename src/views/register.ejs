@@ -9,18 +9,16 @@
     <link rel="stylesheet" href="/css/style.css">
     <title>Register</title>
 </head>
-<style>
-
-</style>
-
 <body>
     <div class="container">
         <div class="form-section">
+            <h2>Welcome!</h2>
+            <br> 
             <div class="Row" style="font-size: 28px">
-                <a class="navbar" href="<%= url %>login" style="margin-right: 20px;">Login</a>
-                <a class="navbarActive" href="<%= url %>register" style="margin-right: 20px;">Register</a>
+                <a class="navbar" href="<%= url %>login">Login</a>
+                <a class="navbarActive" href="<%= url %>register">Register</a>
             </div>
-            <br> <br>
+            <br>
             <form action="<%= url %>register/save" method="POST">
                 <div class="input-field">
                     <i class="fas fa-user"></i>
@@ -33,9 +31,8 @@
                 <button type="submit">Register</button>
             </form>
         </div>
-        <div class="side-pic">
-            <img src="https://i.pinimg.com/736x/bc/a9/9f/bca99faefba0e082b84478e1fd9f45f0.jpg"
-                style="width: 400px; clip-path: circle(75% at 100% 50%);">
+        <div class="image-container">
+            <img src="https://i.pinimg.com/736x/bc/a9/9f/bca99faefba0e082b84478e1fd9f45f0.jpg">
         </div>
     </div>
 

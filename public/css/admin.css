@@ -7,7 +7,7 @@ body {
 }
 
 .header {
-    background-color: #d7b5a8;
+    
     color: white;
     padding: 15px 30px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
@@ -61,6 +61,10 @@ button.btn {
     color: white;
     font-weight: bold;
     transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+button[type="submit"].btn-primary {
+    margin-top: 20px;
 }
 
 button.btn:hover {

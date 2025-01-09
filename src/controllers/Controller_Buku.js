@@ -55,7 +55,7 @@ module.exports = {
                         req.flash('color', 'success');
                         req.flash('status', 'Yes..');
                         req.flash('message', 'Data berhasil disimpan');
-                        res.redirect('/buku');
+                        res.redirect('/');
                     }
                 );
                 connection.release();

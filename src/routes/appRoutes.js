@@ -8,7 +8,7 @@ const pinjamRoutes = require('./Route_Pinjam');
 
 router.get('/', verifyUser.isLogin, homeController.home_admin);
 router.get('/peminjaman', verifyUser.isLogin, homeUserController.peminjaman);
-router.get('/buku', verifyUser.isLogin, bukuController.getBuku);
+router.post('/saveBuku', verifyUser.isLogin, bukuController.saveBuku);
 
 //router.use('/', bukuRoute)
 router.use('/peminjaman', pinjamRoutes);
