@@ -46,7 +46,7 @@ module.exports = {
                         req.session.role = role;
 
                         if (role === 'admin') {
-                            res.redirect('/');
+                            res.redirect('/admin');
                         } else if (role === 'user') {
                             res.redirect('/peminjaman');
                         }

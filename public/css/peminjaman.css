@@ -5,11 +5,14 @@ body {
     font-family: 'Poppins', sans-serif;
     background-color: #f4f4f9;
     color: #333;
+    margin: 0; /* Hilangkan default margin body */
+    padding: 0; /* Opsional jika Anda butuh lebih rapi */
 }
 
 .header {
     background-color: #d7b5a8;
     color: white;
+    margin: 0 !important;
     padding: 15px 30px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     display: flex;
@@ -19,10 +22,13 @@ body {
     /* Rata tengah secara vertikal */
 }
 
-.header .logo {
-    font-size: 1.5rem;
-    font-weight: bold;
-    font-family: Poppins;
+.header .logo img {
+    width: 50px; /* Ukuran gambar logo */
+    height: 50px; /* Membuat gambar persegi */
+    border-radius: 50%; /* Membuat gambar berbentuk lingkaran */
+    object-fit: cover; /* Menyesuaikan gambar di dalam lingkaran */
+    background-color: #f4f4f9; /* Tambahkan warna background jika diperlukan */
+    border: 2px solid #d7b5a8; /* Tambahkan border jika diinginkan */
 }
 
 .navbar a {
@@ -47,15 +53,14 @@ body {
     align-items: flex-start;
     background-color: #ffffff;
     border-radius: 10px;
-    padding: 50px;
+    padding: 60px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     animation: fadeIn 0.8s ease;
-    margin-top: 50px;
+    margin-top: 10px;
 
 }
 
 .title {
-
     font-size: 1.8rem;
     color: #d7b5a8;
     text-transform: uppercase;
@@ -75,12 +80,9 @@ select#id_buku {
     background: #e5d3c6;
     font-size: 14px;
     color: #6a4b41;
-    /*warna text*/
-    appearance: none;
-    -webkit-appearance: none;
-    -moz-appearance: none;
     outline: none;
     box-shadow: none;
+    left: 20px;
 }
 
 select#id_buku:focus {
@@ -96,28 +98,22 @@ select#id_buku option {
 }
 
 .form-group#id_buku ::before {
-    content: '▼';
-    /* Simbol untuk ikon dropdown */
+    content: '\25BC'; /* Icon panah ke bawah */
     font-size: 14px;
-    color: #6a4b41;
-    /* Warna ikon */
+    color: white;
     position: absolute;
+    right: 5px;
     top: 50%;
-    /* Tengah vertikal */
-    left: 15px;
-    /* Posisi ikon dari tepi kiri */
     transform: translateY(-50%);
-    /* Sesuaikan perataan */
     pointer-events: none;
-    /* Ikon tidak bisa diklik */
 }
 
 select#id_buku::after {
-    content: '▼';
-    color: #6a4b41;
-    /* Warna ikon */
+    content: '\25BC'; /* Icon panah ke bawah */
+    font-size: 14px;
+    color: white;
     position: absolute;
-    right: 15px;
+    right: 5px;
     top: 50%;
     transform: translateY(-50%);
     pointer-events: none;
@@ -273,4 +269,32 @@ footer {
 .logout a span {
     margin-right: 2px;
     font-size: 17px;
+}
+
+.custom-alert {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    padding: 15px 20px;
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: bold;
+    z-index: 1000;
+    transition: opacity 0.3s ease-in-out;
+}
+
+.custom-alert.success {
+    background-color: #4CAF50;
+    color: white;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+.custom-alert.error {
+    background-color: #F44336;
+    color: white;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+.custom-alert:hover {
+    opacity: 0.8;
 }

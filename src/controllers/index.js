@@ -1,14 +1,16 @@
 const login = require("./Controller_Login");
 const register = require("./Controller_Register");
-const home_admin = require("./Controller_Home");
+const home = require("./Controller_Home");
+const Admin = require("./Controller_Admin");
 const peminjaman = require("./Controller_Peminjaman");
-const buku = require("./Controller_Buku");
+const report = require("./Controller_Report");
 
 module.exports = {
     login,
     register,
-    home_admin,
+    home,
+    Admin,
     peminjaman,
-    buku
+    report
 
 };

@@ -11,8 +11,9 @@ app.use('/images', express.static(path.join(__dirname, 'public/images')));
 app.use('/css', express.static(path.join(__dirname, 'public/css')));
 
 const loginRoute = require("./src/routes/Route_Login");
+const adminRoute = require("./src/routes/Route_Admin")
 const registerRoute = require("./src/routes/Route_Register");
-const bukuRoute = require("./src/routes/Route_Buku");
+const peminjamanRoute = require("./src/routes/Route_Pinjam");
 const appRoute = require("./src/routes/appRoutes");
 
 app.use(
@@ -46,9 +47,10 @@ app.set('view engine', 'ejs');
 
 app.use("/login", loginRoute);
 app.use("/register", registerRoute);
-app.use("/buku", bukuRoute);
-app.use("/", appRoute)
-app.use("/peminjaman", appRoute);
+app.use("/admin", adminRoute);
+app.use("/peminjaman", peminjamanRoute);
+app.use("/report", adminRoute);
+app.use("/", appRoute);
 
 console.log(app._router.stack);
 

@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <title>Form Peminjaman Buku</title>
     <link rel="stylesheet" href="/css/peminjaman.css">
@@ -11,7 +12,9 @@
 
 <body>
     <header class="header">
-        <div class="logo">LOGO</div>
+        <div class="logo">
+            <img src="https://i.pinimg.com/736x/fd/5f/89/fd5f89ec0272cf169b837a67d67daf39.jpg" class="logo-image">
+        </div>
         <nav class="logout">
             <a href="/peminjaman/logout"><span class="material-icons">logout</span>Logout</a>
         </nav>
@@ -70,6 +73,24 @@
             const judulBuku = selectedOption.getAttribute('data-judul');
             document.getElementById('judul_buku').value = judulBuku;
         }
+
+        
+        document.addEventListener('DOMContentLoaded', function () {
+            const flashMessage = "<%= flash.message %>";
+            const flashColor = "<%= flash.color %>";
+
+            if (flashMessage) {
+                Swal.fire({
+                    title: flashColor === 'success' ? 'Berhasil!' : 'Gagal!',
+                    text: flashMessage,
+                    icon: flashColor === 'success' ? 'success' : 'error',
+                    confirmButtonText: 'OK',
+                    timer: 3000, // Alert akan otomatis hilang setelah 3 detik
+                    timerProgressBar: true,
+                });
+            }
+        });
+
     </script>
 </body>
 

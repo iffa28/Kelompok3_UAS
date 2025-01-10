@@ -23,7 +23,7 @@ module.exports = {
                 }
 
                 res.render("peminjaman", {
-                    url: 'http://localhost:5000/peminjaman/',
+                    url: 'http://localhost:3000/peminjaman/',
                     flash: {
                         color: req.flash('color'),
                         status: req.flash('status'),
@@ -74,7 +74,7 @@ module.exports = {
                 console.error('Error destroying session:', err);
                 return res.status(500).send('Internal Server Error');
             }
-            res.redirect('/login');
+            res.redirect('/');
         });
     }
 }
