@@ -5,8 +5,10 @@ body {
     font-family: 'Poppins', sans-serif;
     background-color: #f4f4f9;
     color: #333;
-    margin: 0; /* Hilangkan default margin body */
-    padding: 0; /* Opsional jika Anda butuh lebih rapi */
+    margin: 0;
+    /* Hilangkan default margin body */
+    padding: 0;
+    /* Opsional jika Anda butuh lebih rapi */
 }
 
 .header {
@@ -23,12 +25,18 @@ body {
 }
 
 .header .logo img {
-    width: 50px; /* Ukuran gambar logo */
-    height: 50px; /* Membuat gambar persegi */
-    border-radius: 50%; /* Membuat gambar berbentuk lingkaran */
-    object-fit: cover; /* Menyesuaikan gambar di dalam lingkaran */
-    background-color: #f4f4f9; /* Tambahkan warna background jika diperlukan */
-    border: 2px solid #d7b5a8; /* Tambahkan border jika diinginkan */
+    width: 50px;
+    /* Ukuran gambar logo */
+    height: 50px;
+    /* Membuat gambar persegi */
+    border-radius: 50%;
+    /* Membuat gambar berbentuk lingkaran */
+    object-fit: cover;
+    /* Menyesuaikan gambar di dalam lingkaran */
+    background-color: #f4f4f9;
+    /* Tambahkan warna background jika diperlukan */
+    border: 2px solid #d7b5a8;
+    /* Tambahkan border jika diinginkan */
 }
 
 .navbar a {
@@ -98,7 +106,8 @@ select#id_buku option {
 }
 
 .form-group#id_buku ::before {
-    content: '\25BC'; /* Icon panah ke bawah */
+    content: '\25BC';
+    /* Icon panah ke bawah */
     font-size: 14px;
     color: white;
     position: absolute;
@@ -109,7 +118,8 @@ select#id_buku option {
 }
 
 select#id_buku::after {
-    content: '\25BC'; /* Icon panah ke bawah */
+    content: '\25BC';
+    /* Icon panah ke bawah */
     font-size: 14px;
     color: white;
     position: absolute;
@@ -237,11 +247,15 @@ select#id_buku::after {
 }
 
 footer {
+    position: fixed;
+    height: 50px;
+    width: 100%;
     text-align: center;
-    background-color: transparent;
+    background-color: #d6b8a5;
     color: black;
-    padding: 10px 0;
     font-size: 0.9rem;
+    bottom: 0;
+
 }
 
 /* Animasi untuk kontainer utama */
@@ -297,4 +311,11 @@ footer {
 
 .custom-alert:hover {
     opacity: 0.8;
+}
+
+p {
+    font-size: 16px;
+    color: #666;
+    text-align: center;
+    padding-bottom: 10px;
 }

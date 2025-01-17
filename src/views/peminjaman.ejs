@@ -8,6 +8,27 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <title>Form Peminjaman Buku</title>
     <link rel="stylesheet" href="/css/peminjaman.css">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/choices.js/public/assets/styles/choices.min.css" />
+    <script src="https://cdn.jsdelivr.net/npm/choices.js/public/assets/scripts/choices.min.js"></script>
+
+    <style>
+        .dropdown-container {
+            border: 1px solid #ccc;
+            max-height: 200px;
+            overflow-y: auto;
+            display: none;
+        }
+
+        .dropdown-item {
+            padding: 8px;
+            cursor: pointer;
+        }
+
+        .dropdown-item:hover {
+            background-color: #f0f0f0;
+        }
+    </style>
 </head>
 
 <body>
@@ -37,23 +58,28 @@
                 <div class="form-container">
                     <form action="/peminjaman/save" method="POST">
                         <div class="form-group">
-                            <select name="id_buku" id="id_buku" required onchange="updateJudulBuku()">
-                                <option value="" disabled selected>Pilih Buku</option>
+                            <label for="jdl_buku">Judul Buku</label>
+                            <input type="text" id="search_input" placeholder="Masukkan Judul Buku"
+                                oninput="filterDropdown()" />
+                            <div id="dropdown_container" class="dropdown-container">
                                 <% books.forEach(book=> { %>
-                                    <option value="<%= book.id_buku %>" data-judul="<%= book.judul_buku %>">
+                                    <div class="dropdown-item" data-id="<%= book.id_buku %>" onclick="selectBook(this)">
                                         <%= book.judul_buku %>
-                                    </option>
+                                    </div>
                                     <% }) %>
-                            </select>
+                            </div>
+                            <input type="hidden" name="id_buku" id="id_buku">
                             <input type="hidden" name="judul_buku" id="judul_buku">
                         </div>
                         <div class="form-group">
+                            <label for="tgl_pinjam">Tanggal Peminjaman</label>
                             <input type="date" name="tgl_pinjam" id="tgl_pinjam" placeholder="Tanggal Peminjaman"
-                                required>
+                                required min="<%= dateRange.today %>" max="<%= dateRange.maxDate %>">
                         </div>
                         <div class="form-group">
+                            <label for="tgl_kembali">Tanggal Pengembalian</label>
                             <input type="date" name="tgl_kembali" id="tgl_kembali" placeholder="Tanggal Pengembalian"
-                                required>
+                                required min="<%= dateRange.today %>" max="<%= dateRange.maxDate %>">
                         </div>
                         <button type="submit">OK</button>
                     </form>
@@ -62,8 +88,8 @@
         </div>
     </main>
 
-    <footer class="footer">
-        © 2024 Project Kelompok 3
+    <footer>
+        <p>&copy; 2024 Project Kelompok 3</p>
     </footer>
 
     <script>
@@ -74,7 +100,7 @@
             document.getElementById('judul_buku').value = judulBuku;
         }
 
-        
+
         document.addEventListener('DOMContentLoaded', function () {
             const flashMessage = "<%= flash.message %>";
             const flashColor = "<%= flash.color %>";
@@ -90,6 +116,25 @@
                 });
             }
         });
+
+        function filterDropdown() {
+            const input = document.getElementById('search_input').value.toLowerCase();
+            const items = document.querySelectorAll('.dropdown-item');
+            items.forEach(item => {
+                const text = item.textContent.toLowerCase();
+                item.style.display = text.includes(input) ? 'block' : 'none';
+            });
+            document.getElementById('dropdown_container').style.display = input ? 'block' : 'none';
+        }
+
+        function selectBook(item) {
+            const judulBuku = item.textContent.trim();
+
+            document.getElementById('id_buku').value = item.getAttribute('data-id');
+            document.getElementById('judul_buku').value = judulBuku;
+            document.getElementById('search_input').value = judulBuku;
+            document.getElementById('dropdown_container').style.display = 'none';
+        }
 
     </script>
 </body>

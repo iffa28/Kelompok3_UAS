@@ -22,6 +22,9 @@ module.exports = {
                     return;
                 }
 
+                const today = moment().format('YYYY-MM-DD');
+                const maxDate = moment().add(14, 'days').format('YYYY-MM-DD');
+
                 res.render("peminjaman", {
                     url: 'http://localhost:3000/peminjaman/',
                     flash: {
@@ -29,7 +32,8 @@ module.exports = {
                         status: req.flash('status'),
                         message: req.flash('message')
                     },
-                    books: results // Kirim data buku ke view
+                    books: results, // Kirim data buku ke view
+                    dateRange: { today, maxDate }
                 });
 
                 connection.release();
@@ -40,13 +44,15 @@ module.exports = {
     savePinjam(req, res) {
         let { id_buku, judul_buku, tgl_pinjam, tgl_kembali } = req.body;
 
-        if (id_buku && judul_buku && tgl_pinjam && tgl_kembali) {
+        let id_user = req.session.userid;
+
+        if (id_buku && judul_buku && tgl_pinjam && tgl_kembali && id_user) {
             pool.getConnection(function (err, connection) {
                 if (err) throw err;
 
                 connection.query(
-                    `INSERT INTO peminjaman (id_buku, judul_buku, tgl_pinjam, tgl_kembali) VALUES (?, ?, ?, ?);`,
-                    [id_buku, judul_buku, tgl_pinjam, tgl_kembali],
+                    `INSERT INTO peminjaman (id_buku, judul_buku, tgl_pinjam, tgl_kembali, id_user) VALUES (?, ?, ?, ?, ?);`,
+                    [id_buku, judul_buku, tgl_pinjam, tgl_kembali, id_user],
                     function (error, results) {
                         if (error) {
                             console.error(error);

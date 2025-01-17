@@ -9,6 +9,7 @@ pool.on('error', (err) => {
 
 module.exports = {
     getReport(req, res) {
+        
         pool.getConnection(function (err, connection) {
             if (err) throw err;
     
@@ -18,7 +19,7 @@ module.exports = {
                     COUNT(peminjaman.id_buku) AS jumlah_peminjaman
                 FROM peminjaman
                 JOIN buku ON peminjaman.id_buku = buku.id_buku
-                WHERE tgl_pinjam >= DATE_SUB(CURDATE(), INTERVAL 7 DAY)  -- Hanya 7 hari terakhir
+                WHERE tgl_pinjam >= DATE_SUB(CURDATE(), INTERVAL 1 MONTH)  -- Hanya 1 bulan terakhir
                 GROUP BY peminjaman.id_buku, buku.judul_buku
                 ORDER BY jumlah_peminjaman DESC;
             `;
@@ -26,7 +27,7 @@ module.exports = {
             connection.query(query, function (error, results) {
                 if (error) {
                     console.error(error);
-                    res.send('Gagal mengambil laporan mingguan');
+                    res.send('Gagal mengambil laporan bulanan');
                     return;
                 }
     

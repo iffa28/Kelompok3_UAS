@@ -5,8 +5,10 @@ body {
     font-family: 'Poppins', sans-serif;
     background-color: #f4f4f9;
     color: #333;
-    margin: 0; /* Hilangkan default margin body */
-    padding: 0; /* Opsional jika Anda butuh lebih rapi */
+    margin: 0;
+    /* Hilangkan default margin body */
+    padding: 0;
+    /* Opsional jika Anda butuh lebih rapi */
 }
 
 .header {
@@ -22,12 +24,18 @@ body {
 }
 
 .header .logo img {
-    width: 50px; /* Ukuran gambar logo */
-    height: 50px; /* Membuat gambar persegi */
-    border-radius: 50%; /* Membuat gambar berbentuk lingkaran */
-    object-fit: cover; /* Menyesuaikan gambar di dalam lingkaran */
-    background-color: #f4f4f9; /* Tambahkan warna background jika diperlukan */
-    border: 2px solid #d7b5a8; /* Tambahkan border jika diinginkan */
+    width: 50px;
+    /* Ukuran gambar logo */
+    height: 50px;
+    /* Membuat gambar persegi */
+    border-radius: 50%;
+    /* Membuat gambar berbentuk lingkaran */
+    object-fit: cover;
+    /* Menyesuaikan gambar di dalam lingkaran */
+    background-color: #f4f4f9;
+    /* Tambahkan warna background jika diperlukan */
+    border: 2px solid #d7b5a8;
+    /* Tambahkan border jika diinginkan */
 }
 
 .navbar a {
@@ -70,7 +78,6 @@ p {
     font-size: 16px;
     color: #666;
     text-align: center;
-    margin-bottom: 20px;
 }
 
 
@@ -82,19 +89,27 @@ table {
     margin-top: 20px;
 }
 
+
 /* CSS untuk tombol Print */
 button {
-    background-color: #d6b8a5; /* Warna latar sesuai tema */
+    background-color: #d6b8a5;
+    /* Warna latar sesuai tema */
+    border-color: #d7b5a8;
     border: none;
     border-radius: 20px;
     color: white;
     padding: 5px 40px;
     font-size: 16px;
     cursor: pointer;
-    position: absolute; /* Menempatkan tombol */
-    right: 130px; /* Jarak dari sisi kanan */
-    bottom: 100px; /* Jarak dari sisi bawah */
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Efek bayangan */
+    position: absolute;
+    /* Menempatkan tombol */
+    right: 160px;
+    /* Jarak dari sisi kanan */
+    margin-top: 0px;
+    bottom: 125px;
+    /* Jarak dari sisi bawah */
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    /* Efek bayangan */
     transition: background-color 0.3s ease;
 }
 
@@ -103,7 +118,8 @@ button:hover {
     background-color: #c49b85;
 }
 
-th, td {
+th,
+td {
     border: 1px solid #ddd;
     padding: 8px;
     text-align: left;
@@ -115,41 +131,48 @@ th {
 }
 
 tr:nth-child(even) {
-    background-color: #f9f9f9; /* Warna latar belakang untuk baris genap */
+    background-color: #f9f9f9;
+    /* Warna latar belakang untuk baris genap */
 }
 
 tr:hover {
-    background-color: #f1f1f1; /* Warna latar belakang saat hover */
+    background-color: #f1f1f1;
+    /* Warna latar belakang saat hover */
 }
 
 footer {
+    position: fixed;
+    height: 45px;
+    width: 100%;
     text-align: center;
-    background-color: transparent;
+    background-color: #d6b8a5;
     color: black;
-    padding: 10px 0;
     font-size: 0.9rem;
-    margin-top: 150px;
+    bottom: 0;
+
 }
 
 .dropdown-container {
     position: relative;
-    margin-bottom: 20px;
+    margin-bottom: -25px;
     text-align: right;
     margin-right: 10%;
 }
 
 .dropdown {
     appearance: none;
-    background-color: #d6b8a5; /* Warna dropdown sesuai tema */
+    background-color: #d6b8a5;
     color: whitesmoke;
     font-size: 16px;
-    padding: 7px 20px;
-    border: none ; 
+    padding: 7px 40px;
+    border: none;
     outline: none;
     cursor: pointer;
     box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
     transition: background-color 0.3s ease;
-    width: 150px; /* Lebar dropdown */
+    width: 150px;
+    /* Lebar dropdown */
+    border-color: #d6b8a5;
     text-align: left;
 }
 
@@ -164,7 +187,8 @@ footer {
 }
 
 .dropdown-container:after {
-    content: '\25BC'; /* Icon panah ke bawah */
+    content: '\25BC';
+    /* Icon panah ke bawah */
     font-size: 14px;
     color: white;
     position: absolute;
@@ -174,3 +198,45 @@ footer {
     pointer-events: none;
 }
 
+#search {
+    margin-left: 154px;
+    display: block;
+    position: relative;
+    background-color: #d6b8a5;
+    border-color: #c49b85;
+}
+
+@media print {
+    button {
+        display: none;
+    }
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+
+    table,
+    th,
+    td {
+        border: 1px solid black;
+    }
+
+    th,
+    td {
+        padding: 8px;
+        text-align: left;
+    }
+}
+
+@media (max-width: 600px) {
+    table {
+        font-size: 12px;
+    }
+
+    th,
+    td {
+        padding: 4px;
+    }
+
+}
