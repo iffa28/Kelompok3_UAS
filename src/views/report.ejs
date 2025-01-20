@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Laporan Mingguan Buku dan Jumlah Peminjaman</title>
+    <title>Laporan Bulanan</title>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="/css/report.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
@@ -19,60 +19,147 @@
             </a>
 
         </div>
-        <nav class="logout">
-            <a href="/report/logout"><span class="material-icons">logout</span>Logout</a>
+        <nav class="back">
+            <a href="/admin">Back</a>
         </nav>
     </header>
-    <h1>Laporan peminjaman buku</h1>
-    <p>Laporan ini menampilkan data peminjaman buku dalam 1 bulan terakhir.</p>
-    <table border="1">
-        <input type="text" id="search" placeholder="Cari buku..." oninput="filterTable()">
-        <thead>
-            <tr>
-                <th>Judul Buku</th>
-                <th>Jumlah Peminjaman</th>
-            </tr>
-        </thead>
-        <tbody>
-            <% laporan.forEach(row=> { %>
+    <div class="container">
+        <h1>Laporan peminjaman buku</h1>
+        <p>Laporan ini menampilkan data peminjaman buku dalam 1 bulan terakhir.</p>
+        <p><strong>Bulan:</strong> <span id="current-month"></span></p>
+        <table border="1">
+            <input type="text" id="search" placeholder="Cari buku..." oninput="filterTable()">
+            <thead>
                 <tr>
-                    <td>
-                        <%= row.judul_buku %>
-                    </td>
-                    <td>
-                        <%= row.jumlah_peminjaman %>
-                    </td>
+                    <th>Judul Buku</th>
+                    <th>Jumlah Peminjaman</th>
                 </tr>
-                <% }); %>
-        </tbody>
-    </table>
-    <button onclick="generatePDF()">Print</button>
+            </thead>
+            <tbody>
+                <% laporan.forEach(row=> { %>
+                    <tr>
+                        <td>
+                            <%= row.judul_buku %>
+                        </td>
+                        <td>
+                            <%= row.jumlah_peminjaman %>
+                        </td>
+                    </tr>
+                    <% }); %>
+            </tbody>
+        </table>
+
+        <h1>Detail Peminjaman</h1>
+        <table border="1">
+            <thead>
+                <tr>
+                    <th>ID Peminjaman</th>
+                    <th>ID Buku</th>
+                    <th>Judul Buku</th>
+                    <th>Tanggal Peminjaman</th>
+                    <th>Tanggal Kembali</th>
+                    <th>ID User</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% peminjaman.forEach(row=> { %>
+                    <tr>
+                        <td>
+                            <%= row.id_peminjaman %>
+                        </td>
+                        <td>
+                            <%= row.id_buku %>
+                        </td>
+                        <td>
+                            <%= row.judul_buku %>
+                        </td>
+                        <td>
+                            <%= row.tgl_pinjam %>
+                        </td>
+                        <td>
+                            <%= row.tgl_kembali %>
+                        </td>
+                        <td>
+                            <%= row.id_user %>
+                        </td>
+                    </tr>
+                    <% }); %>
+            </tbody>
+
+        </table>
+        <div class="buttonContainer">
+            <button onclick="generatePDF()">Print</button>
+        </div>
+
+    </div>
+
     <footer>
         <p>&copy; 2024 Project Kelompok 3</p>
     </footer>
     <script>
+        function getLastMonthName() {
+            const now = new Date();
+            const Month = new Date(now.getFullYear(), now.getMonth());
+            const monthNames = [
+                "Januari", "Februari", "Maret", "April", "Mei", "Juni",
+                "Juli", "Agustus", "September", "Oktober", "November", "Desember"
+            ];
+            return monthNames[Month.getMonth()];
+        }
+
+        // Tampilkan bulan yang sedang aktif
+        document.getElementById("current-month").textContent = getLastMonthName();
+
+
         async function generatePDF() {
             const { jsPDF } = window.jspdf;
             const doc = new jsPDF();
 
-            // Ambil elemen HTML tabel
-            const table = document.querySelector('table');
-
             // Tambahkan judul laporan
             doc.text('Laporan Bulanan', 10, 10);
 
+            // Tambahkan bulan yang sedang aktif
+            doc.text(`Bulan: ${document.getElementById("current-month").textContent}`, 10, 20);
 
-            // Konversi tabel ke format PDF
+            // Ambil elemen HTML tabel pertama (laporan peminjaman buku)
+            const table1 = document.querySelectorAll('table')[0];
+
+            // Konversi tabel pertama ke format PDF
             await doc.autoTable({
-                html: table,
-                startY: 30, // Posisi tabel
+                html: table1,
+                startY: 30, // Posisi tabel pertama
                 headStyles: {
                     fillColor: [100, 149, 237], // Warna biru
                 },
             });
 
+            // Tambahkan jarak antara tabel
+            const table1Height = doc.lastAutoTable.finalY;
+            const margin = 10; // Jarak antara tabel
+            const nextYPosition = table1Height + margin;
+
+            // Tambahkan judul untuk tabel kedua (Detail Peminjaman)
+            doc.text('Detail Peminjaman', 10, nextYPosition);
+
+            // Hitung posisi Y untuk tabel kedua
+            const table2YPosition = nextYPosition + 10; // Tambahkan margin setelah judul
+
+            // Ambil elemen HTML tabel kedua (detail peminjaman)
+            const table2 = document.querySelectorAll('table')[1];
+
+            // Konversi tabel kedua ke format PDF
+            await doc.autoTable({
+                html: table2,
+                startY: table2YPosition, // Posisi tabel kedua setelah judul
+                headStyles: {
+                    fillColor: [100, 149, 237], // Warna biru
+                },
+            });
+
+            // Simpan file PDF
             doc.save('Laporan_peminjaman.pdf');
         }
+
 
         document.getElementById("bulan").addEventListener("change", function () {
             const bulanDipilih = this.value;

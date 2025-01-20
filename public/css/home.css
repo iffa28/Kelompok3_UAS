@@ -156,15 +156,10 @@ body {
 
 .about p {
     margin-bottom: 50px;
-    /* Sesuaikan margin bawah */
     font-size: 1rem;
-    /* Ukuran font lebih kecil */
     line-height: 1.6;
-    /* Jarak antar baris */
     color: black;
-    /* Warna teks */
     text-align: center;
-    /* Rata tengah teks */
 }
 
 /* Info Cards Styling */

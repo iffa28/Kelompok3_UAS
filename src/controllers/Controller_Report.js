@@ -9,13 +9,12 @@ pool.on('error', (err) => {
 
 module.exports = {
     getReport(req, res) {
-        
         pool.getConnection(function (err, connection) {
             if (err) throw err;
-    
-            const query = `
+
+            const reportQuery = `
                 SELECT 
-                    buku.judul_buku,
+                    buku.judul_buku, 
                     COUNT(peminjaman.id_buku) AS jumlah_peminjaman
                 FROM peminjaman
                 JOIN buku ON peminjaman.id_buku = buku.id_buku
@@ -23,16 +22,44 @@ module.exports = {
                 GROUP BY peminjaman.id_buku, buku.judul_buku
                 ORDER BY jumlah_peminjaman DESC;
             `;
-    
-            connection.query(query, function (error, results) {
-                if (error) {
-                    console.error(error);
+
+            const peminjamanQuery = `
+                SELECT 
+                    id_peminjaman,
+                    id_buku,
+                    judul_buku, 
+                    tgl_pinjam, 
+                    tgl_kembali,
+                    id_user
+                FROM peminjaman;
+            `;
+
+            connection.query(reportQuery, function (reportError, reportResults) {
+                if (reportError) {
+                    console.error(reportError);
                     res.send('Gagal mengambil laporan bulanan');
                     return;
                 }
-    
-                res.render('report', { laporan: results });
-                connection.release();
+
+                connection.query(peminjamanQuery, function (peminjamanError, peminjamanResults) {
+                    if (peminjamanError) {
+                        console.error(peminjamanError);
+                        res.send('Gagal mengambil data peminjaman');
+                        return;
+                    }
+
+                    // Memformat tanggal menggunakan toLocaleDateString
+                    peminjamanResults.forEach(peminjaman => {
+                        peminjaman.tgl_pinjam = new Date(peminjaman.tgl_pinjam).toLocaleDateString('id-ID');  // Format tanggal Indonesia
+                        peminjaman.tgl_kembali = new Date(peminjaman.tgl_kembali).toLocaleDateString('id-ID');  // Format tanggal Indonesia
+                    });
+
+                    res.render('report', {
+                        laporan: reportResults,
+                        peminjaman: peminjamanResults,
+                    });
+                    connection.release();
+                });
             });
         });
     }

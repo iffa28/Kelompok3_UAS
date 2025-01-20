@@ -51,7 +51,7 @@ body {
     color: #ffd7b5;
 }
 
-.logout a {
+.back a {
     display: flex;
     align-items: center;
     color: white;
@@ -60,17 +60,13 @@ body {
     text-decoration: none;
 }
 
-.logout a span {
-    margin-right: 2px;
-    font-size: 17px;
-}
-
 /* Gaya untuk judul */
 h1 {
     font-size: 24px;
     color: #333;
     text-align: center;
-    margin-bottom: 20px;
+    margin-top: 25px;
+    margin-bottom: 10px;
 }
 
 /* Gaya untuk paragraf */
@@ -80,6 +76,9 @@ p {
     text-align: center;
 }
 
+.footer p {
+    align-items: center;
+}
 
 /* Gaya untuk tabel */
 table {
@@ -89,29 +88,6 @@ table {
     margin-top: 20px;
 }
 
-
-/* CSS untuk tombol Print */
-button {
-    background-color: #d6b8a5;
-    /* Warna latar sesuai tema */
-    border-color: #d7b5a8;
-    border: none;
-    border-radius: 20px;
-    color: white;
-    padding: 5px 40px;
-    font-size: 16px;
-    cursor: pointer;
-    position: absolute;
-    /* Menempatkan tombol */
-    right: 160px;
-    /* Jarak dari sisi kanan */
-    margin-top: 0px;
-    bottom: 125px;
-    /* Jarak dari sisi bawah */
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-    /* Efek bayangan */
-    transition: background-color 0.3s ease;
-}
 
 /* Hover effect */
 button:hover {
@@ -142,12 +118,10 @@ tr:hover {
 
 footer {
     position: fixed;
-    height: 45px;
+    height: 30px;
     width: 100%;
     text-align: center;
     background-color: #d6b8a5;
-    color: black;
-    font-size: 0.9rem;
     bottom: 0;
 
 }
@@ -199,7 +173,7 @@ footer {
 }
 
 #search {
-    margin-left: 154px;
+    margin-left: 132px;
     display: block;
     position: relative;
     background-color: #d6b8a5;
@@ -238,5 +212,44 @@ footer {
     td {
         padding: 4px;
     }
+
+}
+
+.container {
+    flex: 1;
+    background-color: transparent;
+    /* Warna latar belakang transparan */
+    opacity: 1;
+    /* Opasitas penuh */
+    margin-right: 100px;
+    margin-left: 100px;
+    border: 5px black;
+    /* Hilangkan border */
+    box-shadow: none;
+    /* Hilangkan bayangan */
+}
+
+.buttonContainer {
+    display: flex;
+    justify-content: flex-end;
+    margin-right: 130px;
+    /* Menempatkan tombol di sebelah kanan */
+    margin-top: 20px;
+    /* Memberikan jarak antara tombol dan elemen lainnya */
+}
+
+.buttonContainer button {
+    background-color: #d6b8a5;
+    /* Warna latar sesuai tema */
+    border-color: #d7b5a8;
+    border: none;
+    border-radius: 20px;
+    color: white;
+    padding: 5px 40px;
+    font-size: 16px;
+    cursor: pointer;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    /* Efek bayangan */
+    transition: background-color 0.3s ease;
 
 }
